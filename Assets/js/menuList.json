@@ -1,0 +1,20 @@
+[
+    {
+        "name":"Imagine Dragons Fallen",
+        "artist":"Imagine Dragons",
+        "img":"music-2",
+        "song": "Fallen"
+    },
+    {
+        "name":"Imagine Dragons Roots",
+        "artist":"Imagine Dragons",
+        "img":"music-3",
+        "song": "roots"
+    },
+    {
+        "name":"Imagine Dragons Radioactive",
+        "artist":"Imagine Dragons",
+        "img":"music-1",
+        "song": "Radioactive"
+    }
+]
