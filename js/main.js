@@ -10,7 +10,14 @@ prevBtn=wrapper.querySelector('#prev'),
 nextBtn=wrapper.querySelector('#next'),
 mainAudio=wrapper.querySelector('#main-audio'),
 progressArea=wrapper.querySelector('.progress-area'),
-progressBar=progressArea.querySelector('.progress-bar');
+progressBar=progressArea.querySelector('.progress-bar'),
+slider=wrapper.querySelector('.slider'),
+thumb=wrapper.querySelector('.slider-thumb'),
+progress=wrapper.querySelector('.progress'),
+volumeSlider=wrapper.querySelector('.volume-slider .slider'),
+volumeProgress=wrapper.querySelector('.volume-slider .progress'),
+volumeIcon=wrapper.querySelector('.volume-icon');
+
 
 let musicIndex=Math.floor((Math.random() * allMusic.length) +1);
 let isMusicPaused=true;
@@ -107,3 +114,36 @@ progressArea.addEventListener('click',  (e)=>{
 mainAudio.addEventListener('ended',()=>{
     nextMusic();
 });
+
+let val;
+function customVolumeSlider(){
+    //get max attribute value  from slider
+    const maxVal=volumeSlider.getAttribute('max');
+    //get the percentage
+    val=(volumeSlider.value /maxVal)* 100 + "%";
+    //set the thumb and progress to the current value
+    volumeProgress.style.width=val;
+    //set the audio volume to current value
+    mainAudio.volume=volumeSlider.value /100;
+    //change the volume icons
+    //if the volume is high
+    if(mainAudio.volume > 0.5)
+    {
+        volumeIcon.innerHTML=`<i class='bx bx-volume-full'></i>`;
+    }
+    else if(mainAudio.volume===0)
+    {
+        volumeIcon.innerHTML=`<i class='bx bx-volume-mute'></i>`;
+    }
+    else{
+        volumeIcon.innerHTML=`<i class='bx bx-volume-low'></i>`;
+    }
+}
+
+customVolumeSlider();
+
+// run the functions aigain
+//  when the volume 
+// slider is selected
+
+volumeSlider.addEventListener('input',customVolumeSlider);
